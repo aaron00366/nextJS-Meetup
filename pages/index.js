@@ -12,7 +12,7 @@ export default function HomePage(props){
     </>
 }
 export async function getStaticProps() {
-    const client = await MongoClient.connect('mongodb+srv://AaronShih:AaronShih04263@cluster0.gpazd2e.mongodb.net/')
+    const client = await MongoClient.connect(process.env.MONGODB_URI)
     const db = client.db();
     const meetupsCollection = db.collection('meetups');
     const meetups = await meetupsCollection.find().toArray();
